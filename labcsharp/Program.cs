@@ -48,5 +48,14 @@ public class StudentRecordBook
         Specialty = specialty;
         Grades = new List<Grade>();
     }
+
+
     
     
+}
+    
+   public class Program
+{ 
+
+       
+}
