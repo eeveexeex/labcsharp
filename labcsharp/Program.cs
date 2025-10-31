@@ -123,14 +123,27 @@ public class StudentRecordBook
     
 }
     
-   public class Program
+public class Program
 { 
-        public static void Main()
-    {
-
-
-
-       }
+    Console.OutputEncoding = System.Text.Encoding.UTF8;
+        
+    var recordBook = new StudentRecordBook(
+        "Системный анализ и компьютерное моделирование",
+        "231930391309131",
+        "Прикладная математика и информатика"
+    );
+    
+    var teacher1 = new Teacher("Соболев Д. О.", "Фундаметальная математика");
+    var teacher2 = new Teacher("Мельникова А. В.", "Информационная безопасность");
+    var teacher3 = new Teacher("Коваленко В. С.", "Информационные системы");
+    
+    recordBook.AddExam("Базы данных", "отлично", new DateTime(2025, 6, 25), teacher1);
+    recordBook.AddTest("Интегральные уравнения", new DateTime(2025, 6, 20), teacher2);
+    recordBook.AddCourseWork("Численные методы", "хорошо", new DateTime(2025, 7, 10), teacher3);
+    recordBook.AddExam("Теория вероятностей и математическая статистика", "удовлетворительно", new DateTime(2025, 6, 30), teacher1);
+    recordBook.AddDiplomaWork("Разработка програмного комплекса", "Волкова А. Т.");
+    
+    recordBook.DisplayInfo();
 }
 
 
