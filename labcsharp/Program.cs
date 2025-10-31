@@ -49,7 +49,31 @@ public class StudentRecordBook
         Grades = new List<Grade>();
     }
 
-
+    // методы для добавления
+    // добавить экзамен
+    public void AddExam(string subject, string grade, DateTime date, Teacher teacher)
+    {
+        Grades.Add(new Grade(subject, grade, date, teacher, "экзамен"));
+    }
+    
+    // добавить зачёт
+    public void AddTest(string subject, DateTime date, Teacher teacher)
+    {
+        Grades.Add(new Grade(subject, "зачтено", date, teacher, "зачет"));
+    }
+    
+    // добавить курсовую
+    public void AddCourseWork(string subject, string grade, DateTime date, Teacher teacher)
+    {
+        Grades.Add(new Grade(subject, grade, date, teacher, "курсовая"));
+    }
+    
+    // добавить диплом
+    public void AddDiplomaWork(string workTitle, string supervisor)
+    {
+        DiplomaWork = workTitle;
+        DiplomaSupervisor = supervisor;
+    }
     
     
 }
@@ -59,3 +83,4 @@ public class StudentRecordBook
 
        
 }
+
