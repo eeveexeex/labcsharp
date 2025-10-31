@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
 
 public class Teacher
 {
@@ -74,7 +75,51 @@ public class StudentRecordBook
         DiplomaWork = workTitle;
         DiplomaSupervisor = supervisor;
     }
+    // Методы для изменения
     
+    // Изменить оценку
+    public bool UpdateGrade(string subject, string newGrade)
+    {
+        var grade = Grades.FirstOrDefault(g => g.Subject == subject);
+        if (grade != null)
+        {
+            string oldGrade = grade.GradeValue;
+            grade.GradeValue = newGrade;
+            Console.WriteLine($"\nИЗМЕНЕНИЕ ОЦЕНКИ: {subject}");
+            return true;
+        }
+        return false;
+    }
+    
+    // Вывод зачетной книжки
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"ЗАЧЁТНАЯ КНИЖКА №{RecordBookNumber}");
+        Console.WriteLine($"Кафедра: {Department}");
+        Console.WriteLine($"Направление: {Specialty}");
+        Console.WriteLine();
+        
+        if (Grades.Count > 0)
+        {
+            Console.WriteLine("Сданные предметы:");
+            foreach (var grade in Grades)
+            {
+                Console.WriteLine($"- {grade.Subject}: {grade.GradeValue} ({grade.Type}) - {grade.Date:dd.MM.yyyy}");
+                Console.WriteLine($"  Преподаватель: {grade.Teacher.Name} (Кафедра: {grade.Teacher.Department})");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Нет оценок");
+        }
+        
+        if (!string.IsNullOrEmpty(DiplomaWork))
+        {
+            Console.WriteLine($"\nДипломная работа: {DiplomaWork}");
+            Console.WriteLine($"Научный руководитель: {DiplomaSupervisor}");
+        }
+        
+    }
     
 }
     
@@ -83,4 +128,5 @@ public class StudentRecordBook
 
        
 }
+
 
